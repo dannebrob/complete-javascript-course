@@ -179,3 +179,68 @@ emma.calcAge();
 console.log(emma);
 
 // Coding challange #2
+
+//#212 - challange
+
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
+
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`${this.make} going at ${this.speed} km/h`);
+// };
+
+// Car.prototype.break = function () {
+//   this.speed -= 5;
+//   console.log(`${this.make} going at ${this.speed} km/h`);
+// };
+
+// const car1 = new Car('Volvo', 56);
+// const car2 = new Car('Tesla', 230);
+// console.dir(car1);
+
+// car1.break();
+// car1.break();
+// car1.accelerate();
+// car1.accelerate();
+// car1.accelerate();
+// console.log(car1);
+
+// car2.break();
+// car2.break();
+// car2.break();
+
+class CarCl {
+  constructor(brand, speed) {
+    this.brand = brand;
+    this.speed = speed;
+  }
+  acc() {
+    this.speed += 10;
+    console.log(`${this.brand} is goning at ${this.speed} km/h `);
+  }
+
+  break() {
+    this.speed -= 5;
+    console.log(`${this.brand} is goning at ${this.speed} km/h`);
+  }
+  get speedUS() {
+    return this.speed / 1.6;
+  }
+  set speedUS(speed) {
+    this.speed = speed * 1.6;
+  }
+}
+
+const ford = new CarCl('ford', 213);
+console.log(ford.speedUS);
+ford.acc();
+ford.break();
+ford.break();
+
+ford.speedUS = 50;
+console.log(ford);
+
+// #218
