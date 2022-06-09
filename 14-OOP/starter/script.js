@@ -87,68 +87,95 @@
 // class expression
 // const PersonCl = class {}
 
-// class declearation
-class PersonCl {
-  constructor(fullname, birtYear) {
-    this.fullname = fullname;
-    this.birtYear = birtYear;
-  }
-  //Add a method to the class, by proto
+// // class declearation
+// class PersonCl {
+//   constructor(fullname, birtYear) {
+//     this.fullname = fullname;
+//     this.birtYear = birtYear;
+//   }
+//   //Add a method to the class, by proto
+//   calcAge() {
+//     console.log(2037 - this.birtYear);
+//   }
+//   greet() {
+//     console.log(`Hey ${this.fullname}`);
+//   }
+
+//   get age() {
+//     return 2037 - this.birtYear;
+//   }
+
+//   set fullname(name) {
+//     console.log(name);
+//     if (name.includes(' ')) this._fullname = name;
+//     else alert(`${name}: this is not a full name`);
+//   }
+
+//   get fullname() {
+//     return this._fullname;
+//   }
+
+//   static hey() {
+//     console.log('Static Hey ❤️');
+//     console.log(this);
+//   }
+// }
+
+// const jessica = new PersonCl('jess davis', 1996);
+// console.log(jessica);
+// jessica.calcAge();
+// jessica.greet();
+// console.log(jessica.age);
+// console.log(jessica._fullname);
+
+// // classes are not hoisted
+// // classes are first-class citezens
+// // Classes are exe in strict mode
+
+// const walter = new PersonCl('walter white', 1956);
+// PersonCl.hey();
+// // # 214
+// // Setter & Getters
+
+// const account = {
+//   owner: 'Daniel',
+//   movment: [234, 4556, 77543, 223432],
+
+//   get latest() {
+//     return this.movment.slice(-1).pop();
+//   },
+
+//   set latest(mov) {
+//     return this.movment.push(mov);
+//   },
+// };
+// console.log(account.latest);
+// account.latest = 50;
+// console.log(account.movment);
+
+// #216
+
+const PersonProto = {
   calcAge() {
-    console.log(2037 - this.birtYear);
-  }
-  greet() {
-    console.log(`Hey ${this.fullname}`);
-  }
-
-  get age() {
-    return 2037 - this.birtYear;
-  }
-
-  set fullname(name) {
-    console.log(name);
-    if (name.includes(' ')) this._fullname = name;
-    else alert(`${name}: this is not a full name`);
-  }
-
-  get fullname() {
-    return this._fullname;
-  }
-
-  static hey() {
-    console.log('Static Hey ❤️');
-    console.log(this);
-  }
-}
-
-const jessica = new PersonCl('jess davis', 1996);
-console.log(jessica);
-jessica.calcAge();
-jessica.greet();
-console.log(jessica.age);
-console.log(jessica._fullname);
-
-// classes are not hoisted
-// classes are first-class citezens
-// Classes are exe in strict mode
-
-const walter = new PersonCl('walter white', 1956);
-PersonCl.hey();
-// # 214
-// Setter & Getters
-
-const account = {
-  owner: 'Daniel',
-  movment: [234, 4556, 77543, 223432],
-
-  get latest() {
-    return this.movment.slice(-1).pop();
+    console.log(2037 - this.birthYear);
   },
-
-  set latest(mov) {
-    return this.movment.push(mov);
+  init(name, birthYear) {
+    this.name = name;
+    this.birthYear = birthYear;
   },
 };
-console.log(account.latest);
-account.latest = 50;
-console.log(account.movment);
+
+const steven = Object.create(PersonProto);
+console.log(steven);
+
+steven.name = 'Steven';
+steven.birthYear = 1995;
+steven.calcAge();
+
+console.log(steven.__proto__ === PersonProto);
+const emma = Object.create(PersonProto);
+emma.init('Emma', 1865);
+emma.calcAge();
+console.log(emma);
+
+// Coding challange #2
