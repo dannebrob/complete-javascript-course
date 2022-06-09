@@ -51,35 +51,35 @@
 
 //#212 - challange
 
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`${this.make} going at ${this.speed} km/h`);
-};
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`${this.make} going at ${this.speed} km/h`);
+// };
 
-Car.prototype.break = function () {
-  this.speed -= 5;
-  console.log(`${this.make} going at ${this.speed} km/h`);
-};
+// Car.prototype.break = function () {
+//   this.speed -= 5;
+//   console.log(`${this.make} going at ${this.speed} km/h`);
+// };
 
-const car1 = new Car('Volvo', 56);
-const car2 = new Car('Tesla', 230);
-console.dir(car1);
+// const car1 = new Car('Volvo', 56);
+// const car2 = new Car('Tesla', 230);
+// console.dir(car1);
 
-car1.break();
-car1.break();
-car1.accelerate();
-car1.accelerate();
-car1.accelerate();
-console.log(car1);
+// car1.break();
+// car1.break();
+// car1.accelerate();
+// car1.accelerate();
+// car1.accelerate();
+// console.log(car1);
 
-car2.break();
-car2.break();
-car2.break();
+// car2.break();
+// car2.break();
+// car2.break();
 
 // #213
 //ES6
@@ -114,6 +114,11 @@ class PersonCl {
   get fullname() {
     return this._fullname;
   }
+
+  static hey() {
+    console.log('Static Hey ❤️');
+    console.log(this);
+  }
 }
 
 const jessica = new PersonCl('jess davis', 1996);
@@ -128,6 +133,7 @@ console.log(jessica._fullname);
 // Classes are exe in strict mode
 
 const walter = new PersonCl('walter white', 1956);
+PersonCl.hey();
 // # 214
 // Setter & Getters
 
