@@ -280,47 +280,104 @@
 // console.dir(Student.prototype.constructor);
 
 //Coding challange #3
-const Car = function (make, speed) {
-  this.make = make;
-  this.speed = speed;
-};
+// const Car = function (make, speed) {
+//   this.make = make;
+//   this.speed = speed;
+// };
 
-Car.prototype.accelerate = function () {
-  this.speed += 10;
-  console.log(`${this.make} going at ${this.speed} km/h`);
-};
+// Car.prototype.accelerate = function () {
+//   this.speed += 10;
+//   console.log(`${this.make} going at ${this.speed} km/h`);
+// };
 
-Car.prototype.break = function () {
-  this.speed -= 5;
-  console.log(`${this.make} going at ${this.speed} km/h`);
-};
+// Car.prototype.break = function () {
+//   this.speed -= 5;
+//   console.log(`${this.make} going at ${this.speed} km/h`);
+// };
 
-const EV = function (brand, speed, charge) {
-  Car.call(this, brand, speed);
-  this.charge = charge;
-};
+// const EV = function (brand, speed, charge) {
+//   Car.call(this, brand, speed);
+//   this.charge = charge;
+// };
 
-EV.prototype = Object.create(Car.prototype);
+// EV.prototype = Object.create(Car.prototype);
 
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = chargeTo;
-};
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo;
+// };
 
-EV.prototype.accelerate = function () {
-  this.speed += 20;
-  this.charge--;
-  console.log(
-    `${this.make} is going at ${this.speed} km/h and with a charhe of ${this.charge}`
-  );
-};
-const tesla = new EV('Tesla', 120, 23);
-tesla.chargeBattery(100);
-console.log(tesla);
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge--;
+//   console.log(
+//     `${this.make} is going at ${this.speed} km/h and with a charhe of ${this.charge}`
+//   );
+// };
+// const tesla = new EV('Tesla', 120, 23);
+// tesla.chargeBattery(100);
+// console.log(tesla);
 
-tesla.break();
-tesla.break();
-tesla.break();
-tesla.accelerate(); //worked thx to proto chane (takes the first in chane)
-tesla.accelerate();
+// tesla.break();
+// tesla.break();
+// tesla.break();
+// tesla.accelerate(); //worked thx to proto chane (takes the first in chane)
+// tesla.accelerate();
 
 //220 ES6
+
+// class declearation
+class PersonCl {
+  constructor(fullname, birtYear) {
+    this.fullname = fullname;
+    this.birtYear = birtYear;
+  }
+  //Add a method to the class, by proto
+  calcAge() {
+    console.log(2037 - this.birtYear);
+  }
+  greet() {
+    console.log(`Hey ${this.fullname}`);
+  }
+
+  get age() {
+    return 2037 - this.birtYear;
+  }
+
+  set fullname(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullname = name;
+    else alert(`${name}: this is not a full name`);
+  }
+
+  get fullname() {
+    return this._fullname;
+  }
+
+  static hey() {
+    console.log('Static Hey ❤️');
+    console.log(this);
+  }
+}
+
+class Student extends PersonCl {
+  constructor(fullname, birtYear, course) {
+    //Needs to happen first (sets the this-keyword)
+    super(fullname, birtYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`Hello my name is ${this.fullname}`);
+  }
+  calcAge() {
+    console.log(`im ${2022 - this.birtYear} years old`);
+  }
+}
+console.log(Student);
+
+const mat = new Student('Mat Clark', 1989, 'Work');
+
+console.log(mat);
+mat.introduce();
+mat.calcAge(); //Proto chane workes
+mat.greet();
